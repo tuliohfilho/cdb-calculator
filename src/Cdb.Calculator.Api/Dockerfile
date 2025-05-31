@@ -15,4 +15,6 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 ENV ASPNETCORE_URLS=http://*:80
 EXPOSE 80
 
+USER app
+
 ENTRYPOINT ["dotnet", "Cdb.Calculator.Api.dll"]

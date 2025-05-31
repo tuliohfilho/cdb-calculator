@@ -13,7 +13,6 @@ public class CdbCalculateRequestValidator : AbstractValidator<CdbCalculateReques
 
         RuleFor(x => x.Months)
             .NotNull()
-            .NotEmpty()
             .GreaterThan(1);
     }
 }
