@@ -1,7 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /build
 
-# Copia todo o src (e.g. src/Cdb.Calculator.Api)
 COPY ./src ./src
 
 RUN dotnet restore src/Cdb.Calculator.Api/Cdb.Calculator.Api.csproj
