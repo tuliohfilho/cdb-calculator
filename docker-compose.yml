@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  cdbcalculator-api:
+    build:
+      context: .
+      dockerfile: src/Cdb.Calculator.Api/Dockerfile
+    container_name: cdbcalculator-api
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - cdbnetwork
+
+  cdbcalculator-web:
+    build:
+      context: ./src/Cdb.Calculator.App
+      dockerfile: Dockerfile
+    container_name: cdbcalculator-web
+    ports:
+      - "4200:80"
+    depends_on:
+      - cdbcalculator-api
+    networks:
+      - cdbnetwork
+
+networks:
+  cdbnetwork:
+    driver: bridge
