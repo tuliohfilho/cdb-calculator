@@ -1,0 +1,25 @@
+<main class="main">
+  <h1>Calculadora de CDB</h1>
+
+  <div class="card">
+    <label for="initialValue">Valor Inicial (R$):</label>
+    <input id="initialValue" type="number" [(ngModel)]="initialValue" placeholder="Ex: 1000.00" min="0.01" step="0.01">
+
+    <label for="months">Prazo (meses):</label>
+    <input id="months" type="number" [(ngModel)]="months" placeholder="Ex: 12" min="2" step="1">
+
+    <button (click)="calculateCdb()" [disabled]="!initialValue || !months || months <= 1 || initialValue <= 0">Calcular</button>
+
+    <div *ngIf="calculationResult" class="results">
+      <h2>Resultados:</h2>
+      <p>Resultado Bruto: R$ {{ calculationResult.grossResult | number:'1.2-2' }}</p>
+      <p>Resultado Líquido: R$ {{ calculationResult.netResult | number:'1.2-2' }}</p>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      <p>Erro: {{ errorMessage }}</p>
+    </div>
+  </div>
+
+</main>
+
