@@ -18,9 +18,12 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngularApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:4200")
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
+            policy.WithOrigins(
+                "http://localhost:4200",
+                "http://cdbcalculator-web"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
         });
 });
 
