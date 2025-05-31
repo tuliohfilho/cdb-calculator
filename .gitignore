@@ -64,6 +64,13 @@ yarn-error.log*
 .env.*.local
 
 # ------------------------
+# SonarQube
+# ------------------------
+.sonarqube/
+sonar-report.json
+sonar-scanner.log
+
+# ------------------------
 # Others
 # ------------------------
 
