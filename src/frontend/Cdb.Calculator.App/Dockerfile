@@ -1,32 +1,19 @@
-# Dockerfile for Frontend Web App (CdbCalculator.Web)
+FROM node:20 AS builder
 
-# Stage 1: Build the Angular application
-FROM node:20 AS build
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if available)
-COPY package*.json ./
+COPY src/frontend/Cdb.Calculator.App/ .
 
-# Install dependencies
 RUN npm install
+RUN npm run build
 
-# Copy the rest of the application code
-COPY . .
-
-# Build the application for production
-RUN npm run build -- --configuration production --base-href / --deploy-url /
-
-# Stage 2: Serve the application using Nginx
+# Stage 2: Servir com Nginx
 FROM nginx:alpine
 
-# Copy the built application from the build stage to Nginx's web root directory
-COPY --from=build /app/dist/CdbCalculator.Web /usr/share/nginx/html
+COPY --from=builder /app/dist/CdbCalculator.Web/browser usr/share/nginx/html
 
-# Copy custom Nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY src/frontend/Cdb.Calculator.App/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose port 80 for Nginx
 EXPOSE 80
 
-# Start Nginx when the container launches
 CMD ["nginx", "-g", "daemon off;"]

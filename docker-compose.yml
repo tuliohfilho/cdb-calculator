@@ -4,7 +4,7 @@ services:
   cdbcalculator-api:
     build:
       context: .
-      dockerfile: src/Cdb.Calculator.Api/Dockerfile
+      dockerfile: src/backend/Cdb.Calculator.Api/Dockerfile
     container_name: cdbcalculator-api
     ports:
       - "5000:8080"
@@ -15,8 +15,8 @@ services:
 
   cdbcalculator-web:
     build:
-      context: ./src/Cdb.Calculator.App
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: src/frontend/Cdb.Calculator.App/Dockerfile
     container_name: cdbcalculator-web
     ports:
       - "4200:80"
