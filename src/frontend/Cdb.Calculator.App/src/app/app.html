@@ -12,8 +12,8 @@
 
     <div *ngIf="calculationResult" class="results">
       <h2>Resultados:</h2>
-      <p>Resultado Bruto: R$ {{ calculationResult.grossResult | number:'1.2-2' }}</p>
-      <p>Resultado Líquido: R$ {{ calculationResult.netResult | number:'1.2-2' }}</p>
+      <p>Resultado Bruto: {{ calculationResult.grossResult | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
+      <p>Resultado Líquido: {{ calculationResult.netResult | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
     </div>
 
     <div *ngIf="errorMessage" class="error-message">

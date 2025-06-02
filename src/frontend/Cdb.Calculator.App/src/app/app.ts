@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
-import { CommonModule } from '@angular/common'; // Import CommonModule for *ngIf etc.
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
@@ -30,8 +30,7 @@ export class AppComponent {
   calculationResult: CalculationResult | null = null;
   errorMessage: string | null = null;
 
-  // private apiUrl = 'https://localhost:7131/api/Cdb/calculate'; <- para rodar localmente
-  private apiUrl = 'http://cdbcalculator-api:8080/api/Cdb/calculate'; // URL do backend no Docker
+  private apiUrl = 'http://localhost:5000/api/Cdb/calculate';
 
   calculateCdb(): void {
     this.calculationResult = null;
