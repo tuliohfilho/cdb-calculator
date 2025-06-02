@@ -30,7 +30,7 @@ export class AppComponent {
   calculationResult: CalculationResult | null = null;
   errorMessage: string | null = null;
 
-  private apiUrl = 'http://localhost:5000/api/Cdb/calculate';
+  private apiUrl = 'http://localhost:5137/api/Cdb/calculate';
 
   calculateCdb(): void {
     this.calculationResult = null;
