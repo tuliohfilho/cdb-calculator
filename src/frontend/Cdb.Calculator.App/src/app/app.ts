@@ -60,6 +60,17 @@ export class AppComponent {
     });
   }
 
+  validMonthsValue(): void {
+    if (this.months === null || this.months <= 1) {
+      this.months = null;
+      this.errorMessage = 'Por favor, insira um valor inicial positivo e um prazo em meses maior que 1.';
+      return;
+    }
+
+    this.months = Math.floor(this.months);
+    this.errorMessage = '';
+  }
+
   calculateCdb(): void {
     this.calculationResult = null;
     this.errorMessage = null;

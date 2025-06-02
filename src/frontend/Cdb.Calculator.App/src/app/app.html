@@ -6,7 +6,7 @@
     <input id="initialValue" type="text" [(ngModel)]="initialValueText" placeholder="Ex: 10.000,00"  autocomplete="off" (blur)="formatInitialValue()" (input)="parseInitialValue()">
 
     <label for="months">Prazo (meses):</label>
-    <input id="months" type="number" [(ngModel)]="months" placeholder="Ex: 12" min="2" step="1">
+    <input id="months" type="number" [(ngModel)]="months" placeholder="Ex: 12" min="2" step="1" (input)="validMonthsValue()">
 
     <button (click)="calculateCdb()" [disabled]="!initialValue || !months || months <= 1 || initialValue <= 0">Calcular</button>
 
