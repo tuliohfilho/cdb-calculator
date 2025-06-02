@@ -112,12 +112,3 @@ Para executar esta aplicação localmente utilizando Docker, você precisará te
 *   **Validações no Domínio:** As validações de regras de negócio (valor inicial positivo, meses > 1) foram colocadas no construtor da entidade `InvestmentInput` no Domínio, garantindo que objetos inválidos não possam ser criados.
 *   **Tratamento de Erros:** A API retorna códigos de status HTTP apropriados (400 para Bad Request, 500 para Internal Server Error) e o frontend exibe mensagens de erro amigáveis.
 *   **Dockerização:** Facilita a configuração do ambiente de desenvolvimento e a execução da aplicação de forma consistente.
-
-## Possíveis Melhorias
-
-*   **Configuração de Ambiente:** Tornar a URL da API no frontend configurável por ambiente (desenvolvimento, produção) em vez de fixa no código.
-*   **Interface do Usuário:** Melhorar a experiência do usuário (UX) e o design visual (UI) do frontend.
-*   **Tratamento de Erros Mais Detalhado:** Implementar logging mais robusto e talvez um mecanismo global de tratamento de exceções na API.
-*   **Segurança:** Adicionar medidas de segurança apropriadas se a aplicação fosse exposta publicamente.
-*   **Variáveis de Taxa:** Carregar as taxas CDI e TB de uma configuração externa em vez de valores fixos no código.
-
