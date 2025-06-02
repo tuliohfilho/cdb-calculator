@@ -3,7 +3,7 @@
 
   <div class="card">
     <label for="initialValue">Valor Inicial (R$):</label>
-    <input id="initialValue" type="number" [(ngModel)]="initialValue" placeholder="Ex: 1000.00" min="0.01" step="0.01">
+    <input id="initialValue" type="text" [(ngModel)]="initialValueText" placeholder="Ex: 10.000,00"  autocomplete="off" (blur)="formatInitialValue()" (input)="parseInitialValue()">
 
     <label for="months">Prazo (meses):</label>
     <input id="months" type="number" [(ngModel)]="months" placeholder="Ex: 12" min="2" step="1">

@@ -25,12 +25,40 @@ interface CalculationRequest {
 export class AppComponent {
   private http = inject(HttpClient);
 
+  initialValueText: string = '';
   initialValue: number | null = null;
   months: number | null = null;
   calculationResult: CalculationResult | null = null;
   errorMessage: string | null = null;
 
   private apiUrl = 'http://localhost:5137/api/Cdb/calculate';
+
+  parseInitialValue(): void {
+    if (!this.initialValueText) {
+      this.initialValue = null;
+      return;
+    }
+
+    let numericString = this.initialValueText.replace(/[^\d,]/g, '');
+
+    numericString = numericString.replace(',', '.');
+
+    const parsed = parseFloat(numericString);
+
+    this.initialValue = isNaN(parsed) ? null : parsed;
+  }
+
+  formatInitialValue(): void {
+    if (this.initialValue === null) {
+      this.initialValueText = '';
+      return;
+    }
+
+    this.initialValueText = this.initialValue.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  }
 
   calculateCdb(): void {
     this.calculationResult = null;
